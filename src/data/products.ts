@@ -749,3 +749,47 @@ export const drones: Product[] = [
   { id: "drone-6", name: "Freefly Alta X", brand: "Freefly", category: "drone", inStock: true },
 ];
 
+export const postProductionServices: Product[] = [
+  // Editing Services
+  { id: "post-1", name: "Editing / Offline Editing", brand: "Cambroos", category: "post-production", inStock: true, description: "Professional video editing and offline editing services" },
+  { id: "post-2", name: "Online / Color Grading", brand: "Cambroos", category: "post-production", inStock: true, description: "Online editing and professional color grading services" },
+  
+  // VFX Work - Pre-Production
+  { id: "vfx-1", name: "Pre-visualization (Previs)", brand: "Cambroos", category: "vfx", inStock: true, description: "3D animated storyboards and scene planning" },
+  { id: "vfx-2", name: "Concept Art & Matte Painting", brand: "Cambroos", category: "vfx", inStock: true, description: "Digital concept art and matte painting for environments" },
+  
+  // VFX Work - 3D & Animation
+  { id: "vfx-3", name: "3D Modeling", brand: "Cambroos", category: "vfx", inStock: true, description: "High-quality 3D modeling for characters, props, and environments" },
+  { id: "vfx-4", name: "Rigging & Animation Controls", brand: "Cambroos", category: "vfx", inStock: true, description: "Character rigging and animation control systems" },
+  { id: "vfx-5", name: "2D/3D Animation", brand: "Cambroos", category: "vfx", inStock: true, description: "Professional 2D and 3D animation services" },
+  
+  // VFX Work - Simulation & Effects
+  { id: "vfx-6", name: "Simulation & FX (Smoke, Fire, Water, Cloth)", brand: "Cambroos", category: "vfx", inStock: true, description: "Realistic physics simulations for smoke, fire, water, and cloth" },
+  { id: "vfx-7", name: "Simulation Caching & Optimization", brand: "Cambroos", category: "vfx", inStock: true, description: "Simulation caching and performance optimization" },
+  
+  // VFX Work - Rendering & Lighting
+  { id: "vfx-8", name: "Lighting & Rendering", brand: "Cambroos", category: "vfx", inStock: true, description: "Professional 3D lighting and rendering services" },
+  { id: "vfx-9", name: "Render Farm / High-Performance Rendering", brand: "Cambroos", category: "vfx", inStock: true, description: "High-performance rendering farm for complex scenes" },
+  
+  // VFX Work - Compositing & Integration
+  { id: "vfx-10", name: "Compositing", brand: "Cambroos", category: "vfx", inStock: true, description: "Professional compositing and layer integration" },
+  { id: "vfx-11", name: "Roto & Masking", brand: "Cambroos", category: "vfx", inStock: true, description: "Precision rotoscoping and masking services" },
+  { id: "vfx-12", name: "CG Insert / Matte Insert", brand: "Cambroos", category: "vfx", inStock: true, description: "CG element insertion and matte painting integration" },
+  { id: "vfx-13", name: "Motion Tracking / Matchmove", brand: "Cambroos", category: "vfx", inStock: true, description: "Camera tracking and matchmoving for seamless integration" },
+  
+  // VFX Work - Supervision & Delivery
+  { id: "vfx-14", name: "VFX Supervision / QC", brand: "Cambroos", category: "vfx", inStock: true, description: "VFX supervision and quality control services" },
+  { id: "vfx-15", name: "Final Output & Delivery", brand: "Cambroos", category: "vfx", inStock: true, description: "Final VFX output and delivery in all formats" },
+  
+  // Audio Services
+  { id: "post-11", name: "Sound Design & Editing", brand: "Cambroos", category: "post-production", inStock: true, description: "Professional sound design and audio editing" },
+  { id: "post-12", name: "Music Scoring & Composition", brand: "Cambroos", category: "post-production", inStock: true, description: "Original music scoring and composition services" },
+  { id: "post-13", name: "ADR Recording", brand: "Cambroos", category: "post-production", inStock: true, description: "Automated Dialogue Replacement recording" },
+  { id: "post-14", name: "Foley Recording", brand: "Cambroos", category: "post-production", inStock: true, description: "Professional Foley recording and sound effects" },
+  { id: "post-15", name: "Mixing / Final Audio Mix", brand: "Cambroos", category: "post-production", inStock: true, description: "Professional audio mixing and final mix services" },
+  
+  // Finishing & Delivery
+  { id: "post-16", name: "Conforming / DI Preparation", brand: "Cambroos", category: "post-production", inStock: true, description: "Conforming and Digital Intermediate preparation" },
+  { id: "post-17", name: "Final Delivery & Mastering", brand: "Cambroos", category: "post-production", inStock: true, description: "Final delivery and mastering for all formats" },
+];
+

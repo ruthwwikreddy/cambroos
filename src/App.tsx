@@ -11,6 +11,7 @@ import Lenses from "./pages/Lenses";
 import Lighting from "./pages/Lighting";
 import Gear from "./pages/Gear";
 import Production from "./pages/Production";
+import PostProduction from "./pages/PostProduction";
 import Drones from "./pages/Drones";
 import CartPage from "./pages/CartPage";
 import SearchResults from "./pages/SearchResults";
@@ -33,6 +34,7 @@ const App = () => (
               <Route path="/lighting" element={<Lighting />} />
               <Route path="/gear" element={<Gear />} />
               <Route path="/production" element={<Production />} />
+              <Route path="/post-production" element={<PostProduction />} />
               <Route path="/drones" element={<Drones />} />
               <Route path="/cart" element={<CartPage />} />
               <Route path="/search" element={<SearchResults />} />

@@ -4,6 +4,7 @@ import lightingImage from "@/assets/lighting-category.jpg";
 import gripImage from "@/assets/grip-category.jpg";
 import droneImage from "@/assets/drone-category.jpg";
 import productionImage from "@/assets/hero-camera.jpg";
+import postProductionImage from "@/assets/post-production-category.jpg";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -43,6 +44,12 @@ const categories = [
     description: "Complete production packages and solutions",
     image: productionImage,
     link: "/production"
+  },
+  {
+    title: "Post Production & VFX",
+    description: "Complete VFX pipeline, editing, color grading, 3D animation, and audio services",
+    image: postProductionImage,
+    link: "/post-production"
   },
 ];
 

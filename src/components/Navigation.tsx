@@ -188,6 +188,13 @@ const Navigation = () => {
                     >
                       Production
                     </Link>
+                    <Link
+                      to="/post-production"
+                      className="block px-4 py-2 text-sm hover:bg-accent/50 hover:text-primary transition-colors"
+                      onClick={() => setIsProductsOpen(false)}
+                    >
+                      Post Production
+                    </Link>
                   </div>
                 )}
               </div>
