@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Helmet } from "react-helmet";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -18,8 +18,6 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Calendar as CalendarComponent } from "@/components/ui/calendar";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { useForm as useFormspreeForm } from "@formspree/react";
-import { ValidationError } from "@formspree/react";
 
 const formSchema = z.object({
   firstName: z.string().min(1, "First name is required"),
@@ -43,8 +41,9 @@ type FormValues = z.infer<typeof formSchema>;
 const CartPage = () => {
   const { items, removeFromCart, updateQuantity, clearCart } = useCart();
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [state, handleSubmit] = useFormspreeForm("xrbydplk");
-  const isSubmitted = state.succeeded;
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -68,6 +67,7 @@ const CartPage = () => {
   const onSubmit = async (formData: FormValues) => {
     try {
       setIsSubmitting(true);
+      setSubmitError(null);
       
       const cartItems = items.map(item => ({
         id: item.id,
@@ -76,21 +76,46 @@ const CartPage = () => {
         quantity: item.quantity,
       }));
 
-      const formDataToSend = {
-        ...formData,
+      const requestData = {
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        email: formData.email,
+        phone: formData.phone,
+        company: formData.company || '',
+        projectTitle: formData.projectTitle || '',
         startDate: format(formData.startDate, 'yyyy-MM-dd'),
         endDate: format(formData.endDate, 'yyyy-MM-dd'),
-        cartItems: JSON.stringify(cartItems, null, 2)
+        country: formData.country,
+        message: formData.message || '',
+        cartItems: cartItems
       };
 
-      // This will be handled by Formspree's handleSubmit
-      await handleSubmit(formDataToSend);
+      // Send order request to backend API
+      const apiUrl = import.meta.env.PROD 
+        ? '/api/send-order' 
+        : 'http://localhost:3001/api/send-order';
       
-      // If we get here, the form was submitted successfully
+      const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(requestData),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok || !result.success) {
+        throw new Error(result.error || 'Failed to send order request');
+      }
+      
+      // Clear cart and mark as submitted
       clearCart();
+      setIsSubmitted(true);
+      
     } catch (error) {
-      console.error("Error in form submission:", error);
-      alert('Failed to submit the form. Please try again.');
+      console.error('Error sending order:', error);
+      setSubmitError(error instanceof Error ? error.message : 'Failed to submit the form. Please try again or contact us directly.');
     } finally {
       setIsSubmitting(false);
     }
@@ -124,19 +149,16 @@ const CartPage = () => {
     );
   }
 
-  // Show form errors if any
-  if (state.errors) {
+  // Show error message if submission failed
+  if (submitError) {
     return (
       <div className="min-h-screen flex flex-col">
         <Navigation />
         <main className="flex-1 pt-20 flex items-center justify-center p-4">
           <Card className="w-full max-w-md text-center p-8">
             <div className="text-red-500 mb-4">
-              <ValidationError 
-                prefix="Form submission error" 
-                field="form"
-                errors={state.errors}
-              />
+              <p className="font-medium">Form submission error</p>
+              <p className="mt-2">{submitError}</p>
             </div>
             <Button asChild className="w-full">
               <Link to="/cart">Back to Cart</Link>
