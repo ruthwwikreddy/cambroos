@@ -6,6 +6,7 @@ import { useCart } from "@/contexts/CartContext";
 import { ThemeToggle } from "@/components/theme/ThemeToggle";
 import { Link, useNavigate } from "react-router-dom";
 import { Input } from "@/components/ui/input";
+import { Drawer } from "vaul";
 import { gear, cameras, lenses, lighting, drones } from "@/data/products";
 
 const Navigation = () => {
@@ -123,7 +124,7 @@ const Navigation = () => {
   };
 
   return (
-    <div className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-full max-w-4xl px-4">
+    <div className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-full max-w-6xl px-4">
       <nav 
         className={`relative rounded-2xl p-1.5 transition-all duration-500 transform ${
           isScrolled 
@@ -216,13 +217,13 @@ const Navigation = () => {
 
             <div className="flex items-center space-x-3">
               {/* Search */}
-              <div className="relative" ref={searchRef}>
+              <div className="relative w-full md:w-auto" ref={searchRef}>
                 <form onSubmit={handleSearch} className="relative">
                   <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                   <Input
                     type="text"
                     placeholder="Search..."
-                    className="pl-10 w-40 focus:w-64 transition-all duration-300 bg-background/50 border-border/50"
+                    className="pl-10 w-full md:w-40 md:focus:w-64 transition-all duration-300 bg-background/50 border-border/50"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     onFocus={() => setIsSearchFocused(true)}
@@ -300,7 +301,15 @@ const Navigation = () => {
                 </Link>
               </div>
 
-              {/* Mobile menu button */}
+
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile menu */}
+        <div className="md:hidden">
+          <Drawer.Root open={isOpen} onOpenChange={setIsOpen}>
+            <Drawer.Trigger asChild>
               <Button
                 variant="ghost"
                 size="icon"
@@ -310,67 +319,74 @@ const Navigation = () => {
               >
                 {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
               </Button>
-            </div>
-          </div>
+            </Drawer.Trigger>
+            <Drawer.Portal>
+              <Drawer.Overlay className="fixed inset-0 bg-black/40" />
+              <Drawer.Content className="bg-background flex flex-col rounded-t-[10px] h-[96%] mt-24 fixed bottom-0 left-0 right-0">
+                <div className="p-4 bg-background rounded-t-[10px] flex-1">
+                  <div className="mx-auto w-12 h-1.5 flex-shrink-0 rounded-full bg-muted-foreground mb-8" />
+                  <div className="max-w-md mx-auto">
+                    <Drawer.Title className="font-medium mb-4">
+                      Cambroos
+                    </Drawer.Title>
+                    <div className="px-2 pt-2 pb-3 space-y-1">
+                      <div className="px-3 py-2 text-sm font-medium text-foreground/80">Products</div>
+                      <Link
+                        to="/cameras"
+                        className="block pl-6 py-2 text-sm text-foreground/80 hover:bg-accent/50 hover:text-primary transition-colors rounded-md"
+                        onClick={() => setIsOpen(false)}
+                      >
+                        Cameras
+                      </Link>
+                      <Link
+                        to="/lenses"
+                        className="block pl-6 py-2 text-sm text-foreground/80 hover:bg-accent/50 hover:text-primary transition-colors rounded-md"
+                        onClick={() => setIsOpen(false)}
+                      >
+                        Lenses
+                      </Link>
+                      <Link
+                        to="/gear"
+                        className="block pl-6 py-2 text-sm text-foreground/80 hover:bg-accent/50 hover:text-primary transition-colors rounded-md"
+                        onClick={() => setIsOpen(false)}
+                      >
+                        Gear
+                      </Link>
+                      <Link
+                        to="/lighting"
+                        className="block pl-6 py-2 text-sm text-foreground/80 hover:bg-accent/50 hover:text-primary transition-colors rounded-md"
+                        onClick={() => setIsOpen(false)}
+                      >
+                        Lighting
+                      </Link>
+                      <a
+                        href="#studio"
+                        className="block px-3 py-2 rounded-md text-foreground/80 hover:bg-accent/50 hover:text-primary transition-colors text-sm"
+                        onClick={() => setIsOpen(false)}
+                      >
+                        Studio
+                      </a>
+                      <a
+                        href="#about"
+                        className="block px-3 py-2 rounded-md text-foreground/80 hover:bg-accent/50 hover:text-primary transition-colors text-sm"
+                        onClick={() => setIsOpen(false)}
+                      >
+                        About
+                      </a>
+                      <a
+                        href="#portfolio"
+                        className="block px-3 py-2 rounded-md text-foreground/80 hover:bg-accent/50 hover:text-primary transition-colors text-sm"
+                        onClick={() => setIsOpen(false)}
+                      >
+                        Portfolio
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </Drawer.Content>
+            </Drawer.Portal>
+          </Drawer.Root>
         </div>
-
-        {/* Mobile menu */}
-        {isOpen && (
-          <div className="md:hidden border-t border-border/20 mt-2 pt-2">
-            <div className="px-2 pt-2 pb-3 space-y-1">
-              <div className="px-3 py-2 text-sm font-medium text-foreground/80">Products</div>
-              <Link
-                to="/cameras"
-                className="block pl-6 py-2 text-sm text-foreground/80 hover:bg-accent/50 hover:text-primary transition-colors rounded-md"
-                onClick={() => setIsOpen(false)}
-              >
-                Cameras
-              </Link>
-              <Link
-                to="/lenses"
-                className="block pl-6 py-2 text-sm text-foreground/80 hover:bg-accent/50 hover:text-primary transition-colors rounded-md"
-                onClick={() => setIsOpen(false)}
-              >
-                Lenses
-              </Link>
-              <Link
-                to="/gear"
-                className="block pl-6 py-2 text-sm text-foreground/80 hover:bg-accent/50 hover:text-primary transition-colors rounded-md"
-                onClick={() => setIsOpen(false)}
-              >
-                Gear
-              </Link>
-              <Link
-                to="/lighting"
-                className="block pl-6 py-2 text-sm text-foreground/80 hover:bg-accent/50 hover:text-primary transition-colors rounded-md"
-                onClick={() => setIsOpen(false)}
-              >
-                Lighting
-              </Link>
-              <a
-                href="#studio"
-                className="block px-3 py-2 rounded-md text-foreground/80 hover:bg-accent/50 hover:text-primary transition-colors text-sm"
-                onClick={() => setIsOpen(false)}
-              >
-                Studio
-              </a>
-              <a
-                href="#about"
-                className="block px-3 py-2 rounded-md text-foreground/80 hover:bg-accent/50 hover:text-primary transition-colors text-sm"
-                onClick={() => setIsOpen(false)}
-              >
-                About
-              </a>
-              <a
-                href="#portfolio"
-                className="block px-3 py-2 rounded-md text-foreground/80 hover:bg-accent/50 hover:text-primary transition-colors text-sm"
-                onClick={() => setIsOpen(false)}
-              >
-                Portfolio
-              </a>
-            </div>
-          </div>
-        )}
       </nav>
     </div>
   );

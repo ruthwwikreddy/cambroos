@@ -20,10 +20,10 @@ const Hero = () => {
       {/* Content */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-16 text-white">
         <div className="max-w-3xl">
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
             Premium Film Equipment Rental in Singapore
           </h1>
-          <p className="text-xl md:text-2xl text-white/90 mb-8 leading-relaxed">
+          <p className="text-lg md:text-2xl text-white/90 mb-8 leading-relaxed">
             Professional cameras, lenses, lighting, and studio gear for your next production. 
             Trusted by Singapore's creative industry.
           </p>
