@@ -6,7 +6,7 @@ const Footer = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           <div>
-            <h3 className="text-2xl font-bold text-teal mb-4">Cambroos</h3>
+            <h3 className="text-2xl font-bold text-teal mb-4">CAMBROO SG PTE. LTD.</h3>
             <p className="text-white/70 leading-relaxed">
               Singapore's premier film equipment rental partner for professional productions.
             </p>
@@ -77,7 +77,7 @@ const Footer = () => {
               </li>
               <li className="flex items-start gap-3">
                 <MapPin className="h-5 w-5 text-teal mt-0.5 flex-shrink-0" />
-                <span className="text-white/70">Singapore</span>
+                <span className="text-white/70">200 JALAN SULTAN, #03-45, TEXTILE CENTRE, SINGAPORE 199018</span>
               </li>
             </ul>
           </div>
