@@ -137,7 +137,7 @@ const Navigation = () => {
         <div className="relative z-10">
           <div className="flex items-center justify-between h-14 px-3">
             <Link to="/" className="flex-shrink-0">
-              <span className="text-xl font-bold bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">Cambroos 🇸🇬</span>
+              <span className="text-xl font-bold bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">Cambroos</span>
             </Link>
             
             <div className="hidden md:flex items-center space-x-1">
