@@ -28,9 +28,27 @@ const Hero = () => {
             Trusted by Singapore's creative industry.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
-            <Button size="lg" className="text-lg">
+            <Button 
+              size="lg" 
+              className="text-lg"
+              onClick={() => {
+                const equipmentSection = document.getElementById('equipment');
+                equipmentSection?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }}
+            >
               Browse Equipment
               <ArrowRight className="ml-2 h-5 w-5" />
+            </Button>
+            <Button 
+              size="lg" 
+              variant="outline"
+              className="text-lg bg-white/10 hover:bg-white/20 border-white/30 text-white"
+              onClick={() => {
+                const contactSection = document.getElementById('contact');
+                contactSection?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }}
+            >
+              Contact Us
             </Button>
           </div>
         </div>

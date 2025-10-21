@@ -20,20 +20,37 @@ import { Calendar as CalendarComponent } from "@/components/ui/calendar";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 const formSchema = z.object({
-  firstName: z.string().min(1, "First name is required"),
-  lastName: z.string().min(1, "Last name is required"),
-  projectTitle: z.string().optional(),
-  phone: z.string().min(1, "Phone number is required"),
+  firstName: z.string()
+    .min(1, "First name is required")
+    .min(2, "First name must be at least 2 characters")
+    .max(50, "First name must be less than 50 characters")
+    .regex(/^[a-zA-Z\s'-]+$/, "First name can only contain letters, spaces, hyphens and apostrophes"),
+  lastName: z.string()
+    .min(1, "Last name is required")
+    .min(2, "Last name must be at least 2 characters")
+    .max(50, "Last name must be less than 50 characters")
+    .regex(/^[a-zA-Z\s'-]+$/, "Last name can only contain letters, spaces, hyphens and apostrophes"),
+  projectTitle: z.string().max(100, "Project title must be less than 100 characters").optional(),
+  phone: z.string()
+    .min(1, "Phone number is required")
+    .min(8, "Phone number must be at least 8 digits")
+    .regex(/^[+]?[(]?[0-9]{1,4}[)]?[-\s.]?[(]?[0-9]{1,4}[)]?[-\s.]?[0-9]{1,9}$/, "Please enter a valid phone number"),
   startDate: z.date({
     required_error: "Start date is required",
   }),
   endDate: z.date({
     required_error: "End date is required",
   }),
-  email: z.string().email("Please enter a valid email"),
-  company: z.string().optional(),
-  message: z.string().optional(),
-  country: z.string().min(1, "Please select a country"),
+  email: z.string()
+    .min(1, "Email is required")
+    .email("Please enter a valid email address")
+    .max(100, "Email must be less than 100 characters"),
+  company: z.string().max(100, "Company name must be less than 100 characters").optional(),
+  message: z.string().max(500, "Message must be less than 500 characters").optional(),
+  country: z.string().min(1, "Please select a region"),
+}).refine((data) => data.endDate >= data.startDate, {
+  message: "End date must be after or equal to start date",
+  path: ["endDate"],
 });
 
 type FormValues = z.infer<typeof formSchema>;
@@ -43,6 +60,7 @@ const CartPage = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
+  const [retryCount, setRetryCount] = useState(0);
 
 
   const form = useForm<FormValues>({
@@ -103,19 +121,33 @@ const CartPage = () => {
         body: JSON.stringify(requestData),
       });
 
+      if (!response.ok) {
+        const result = await response.json().catch(() => ({ error: 'Network error occurred' }));
+        throw new Error(result.error || `Server error: ${response.status}`);
+      }
+
       const result = await response.json();
 
-      if (!response.ok || !result.success) {
+      if (!result.success) {
         throw new Error(result.error || 'Failed to send order request');
       }
       
       // Clear cart and mark as submitted
       clearCart();
       setIsSubmitted(true);
+      setRetryCount(0);
       
     } catch (error) {
       console.error('Error sending order:', error);
-      setSubmitError(error instanceof Error ? error.message : 'Failed to submit the form. Please try again or contact us directly.');
+      const errorMessage = error instanceof Error ? error.message : 'An unexpected error occurred';
+      
+      if (errorMessage.includes('NetworkError') || errorMessage.includes('Failed to fetch')) {
+        setSubmitError('Network connection error. Please check your internet connection and try again.');
+      } else if (errorMessage.includes('timeout')) {
+        setSubmitError('Request timed out. Please try again.');
+      } else {
+        setSubmitError(errorMessage + ' Please try again or contact us directly at info@cambroos.com');
+      }
     } finally {
       setIsSubmitting(false);
     }
@@ -156,13 +188,29 @@ const CartPage = () => {
         <Navigation />
         <main className="flex-1 pt-20 flex items-center justify-center p-4">
           <Card className="w-full max-w-md text-center p-8">
-            <div className="text-red-500 mb-4">
-              <p className="font-medium">Form submission error</p>
-              <p className="mt-2">{submitError}</p>
+            <div className="flex justify-center mb-4">
+              <div className="bg-red-100 dark:bg-red-900/20 p-3 rounded-full">
+                <svg className="w-10 h-10 text-red-600 dark:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+              </div>
             </div>
-            <Button asChild className="w-full">
-              <Link to="/cart">Back to Cart</Link>
-            </Button>
+            <h2 className="text-2xl font-bold mb-2 text-red-600 dark:text-red-400">Submission Failed</h2>
+            <p className="text-muted-foreground mb-6">{submitError}</p>
+            <div className="space-y-2">
+              <Button 
+                onClick={() => {
+                  setSubmitError(null);
+                  setRetryCount(retryCount + 1);
+                }} 
+                className="w-full"
+              >
+                Try Again
+              </Button>
+              <Button asChild variant="outline" className="w-full">
+                <Link to="/">Back to Home</Link>
+              </Button>
+            </div>
           </Card>
         </main>
         <Footer />
@@ -479,11 +527,11 @@ const CartPage = () => {
                         name="country"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel>Country *</FormLabel>
+                            <FormLabel>Region *</FormLabel>
                             <Select onValueChange={field.onChange} defaultValue={field.value}>
                               <FormControl>
                                 <SelectTrigger>
-                                  <SelectValue placeholder="Select your country" />
+                                  <SelectValue placeholder="Select your region" />
                                 </SelectTrigger>
                               </FormControl>
                                 <SelectContent>
@@ -516,29 +564,42 @@ const CartPage = () => {
                                 />
                               </div>
                             </FormControl>
-                            <FormMessage />
+                            <div className="flex justify-between items-center">
+                              <FormMessage />
+                              <span className={cn(
+                                "text-xs",
+                                (field.value?.length || 0) > 450 ? "text-orange-500" : "text-muted-foreground"
+                              )}>
+                                {field.value?.length || 0}/500
+                              </span>
+                            </div>
                           </FormItem>
                         )}
                       />
 
-                      <Button 
-                        type="submit" 
-                        className="w-full"
-                        size="lg"
-                        disabled={isSubmitting}
-                      >
-                        {isSubmitting ? (
-                          <>
-                            <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                            </svg>
-                            Processing...
-                          </>
-                        ) : (
-                          "Request Quote"
-                        )}
-                      </Button>
+                      <div className="space-y-3">
+                        <p className="text-xs text-muted-foreground text-center">
+                          By submitting this form, you agree to be contacted regarding your quote request.
+                        </p>
+                        <Button 
+                          type="submit" 
+                          className="w-full"
+                          size="lg"
+                          disabled={isSubmitting || items.length === 0}
+                        >
+                          {isSubmitting ? (
+                            <>
+                              <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                              </svg>
+                              Sending Request...
+                            </>
+                          ) : (
+                            "Request Quote"
+                          )}
+                        </Button>
+                      </div>
                     </form>
                   </Form>
                 </CardContent>

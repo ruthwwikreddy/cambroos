@@ -29,16 +29,18 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
       const existing = prev.find((i) => i.id === item.id);
       if (existing) {
         toast({
-          title: "Updated cart",
-          description: `${item.name} quantity updated`,
+          title: "✓ Cart Updated",
+          description: `${item.name} quantity updated to ${existing.quantity + quantity}`,
+          duration: 3000,
         });
         return prev.map((i) =>
           i.id === item.id ? { ...i, quantity: i.quantity + quantity } : i
         );
       }
       toast({
-        title: "Added to cart",
-        description: `${item.name} added to your quote`,
+        title: "✓ Added to Quote",
+        description: `${item.name} (×${quantity}) added successfully`,
+        duration: 3000,
       });
       return [...prev, { ...item, quantity }];
     });
