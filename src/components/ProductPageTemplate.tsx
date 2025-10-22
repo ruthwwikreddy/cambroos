@@ -16,6 +16,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Skeleton } from "@/components/ui/skeleton";
+import { ImageWithFallback } from "@/components/ImageWithFallback";
+import { Skeleton } from "@/components/ui/skeleton";
 import { Product } from "@/data/products";
 
 interface ProductPageTemplateProps {
@@ -245,11 +248,10 @@ export const ProductPageTemplate = ({
                           </Button>
                         </div>
 
-                        {/* Image section - Hidden as requested */}
                         {product.imageUrl && (
                           <div className="mt-4 aspect-w-16 aspect-h-9 bg-muted/30 rounded-md overflow-hidden">
-                            <img 
-                              src={product.imageUrl} 
+                            <ImageWithFallback
+                              src={product.imageUrl}
                               alt={product.name}
                               className="object-cover w-full h-full"
                             />

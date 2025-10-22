@@ -5,7 +5,7 @@ export const ProductCardSkeleton = () => {
   return (
     <Card className="overflow-hidden">
       <CardHeader className="p-0">
-        <Skeleton className="w-full h-48" />
+        <Skeleton className="h-48 w-48" />
       </CardHeader>
       <CardContent className="p-6">
         <Skeleton className="h-6 w-3/4 mb-2" />
