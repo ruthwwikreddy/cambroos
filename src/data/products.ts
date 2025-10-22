@@ -259,13 +259,13 @@ export const gear: Product[] = [
 
 export const lenses: Product[] = [
   // Angenieux
-  { id: "lens-1", name: "Angenieux EZ2", brand: "Angenieux", category: "lenses", inStock: true },
-  { id: "lens-2", name: "Angenieux EZ 3", brand: "Angenieux", category: "lenses", inStock: true },
+  { id: "lens-1", name: "Angenieux EZ2", brand: "Angenieux", category: "lenses", inStock: true, imageUrl: "src/assets/product/Lenses/Angenieux RF Mount  EZ Zoom Lens.jpeg" },
+  { id: "lens-2", name: "Angenieux EZ 3", brand: "Angenieux", category: "lenses", inStock: true, imageUrl: "src/assets/product/Lenses/Angenieux RF Mount  EZ Zoom Lens.jpeg" },
   { id: "lens-3", name: "Angenieux HD 10x5.3 B1ESM ENG B4 Mount Zoom", brand: "Angenieux", category: "lenses", inStock: true },
-  { id: "lens-4", name: "Angenieux Optimo 28-340mm", brand: "Angenieux", category: "lenses", inStock: true },
-  { id: "lens-5", name: "Angenieux Optimo 45-120mm", brand: "Angenieux", category: "lenses", inStock: true },
-  { id: "lens-6", name: "Angenieux Optimo Style 16-40mm", brand: "Angenieux", category: "lenses", inStock: true },
-  { id: "lens-7", name: "Angenieux Optimo Style 30-76mm", brand: "Angenieux", category: "lenses", inStock: true },
+  { id: "lens-4", name: "Angenieux Optimo 28-340mm", brand: "Angenieux", category: "lenses", inStock: true, imageUrl: "src/assets/product/Lenses/Angénieux Optimo Zoom & Anamorphic Lenses.jpeg" },
+  { id: "lens-5", name: "Angenieux Optimo 45-120mm", brand: "Angenieux", category: "lenses", inStock: true, imageUrl: "src/assets/product/Lenses/Angénieux Optimo Zoom & Anamorphic Lenses.jpeg" },
+  { id: "lens-6", name: "Angenieux Optimo Style 16-40mm", brand: "Angenieux", category: "lenses", inStock: true, imageUrl: "src/assets/product/Lenses/Angénieux Optimo Zoom & Anamorphic Lenses.jpeg" },
+  { id: "lens-7", name: "Angenieux Optimo Style 30-76mm", brand: "Angenieux", category: "lenses", inStock: true, imageUrl: "src/assets/product/Lenses/Angénieux Optimo Zoom & Anamorphic Lenses.jpeg" },
   
   // Atlas
   { id: "lens-8", name: "Atlas Orion 2x Anamorphic 32mm", brand: "Atlas", category: "lenses", inStock: true },
@@ -307,7 +307,7 @@ export const lenses: Product[] = [
   { id: "lens-42", name: "ARRI Signature Prime 75mm", brand: "ARRI", category: "lenses" },
   { id: "lens-43", name: "ARRI Signature Prime 95mm", brand: "ARRI", category: "lenses" },
   { id: "lens-44", name: "ARRI Signature Prime 125mm", brand: "ARRI", category: "lenses" },
-  { id: "lens-45", name: "Arri Ultra Prime Set (16,24,32,50,85)", brand: "ARRI", category: "lenses" },
+  { id: "lens-45", name: "Arri Ultra Prime Set (16,24,32,50,85)", brand: "ARRI", category: "lenses", imageUrl: "src/assets/product/Lenses/Arri lenses 18-25-35-50-75-100.jpeg" },
   { id: "lens-46", name: "Arri Master Prime Set (18,25,35,50,75)", brand: "ARRI", category: "lenses" },
   { id: "lens-47", name: "ARRI Signature Prime Set of 6 (18,25,35,47,75,125)", brand: "ARRI", category: "lenses" },
   { id: "lens-48", name: "ARRI Signature Prime Set of 7 (18,25,35,47,58,75,125)", brand: "ARRI", category: "lenses" },
@@ -315,7 +315,7 @@ export const lenses: Product[] = [
   { id: "lens-50", name: "ARRI Signature Zoom 45-135mm", brand: "ARRI", category: "lenses" },
   { id: "lens-51", name: "ARRI Signature 65-300mm Zoom", brand: "ARRI", category: "lenses" },
   { id: "lens-52", name: "ARRI Signature Zoom 45-135mm & 65-300mm w/ 1.7x Adaptor", brand: "ARRI", category: "lenses" },
-  { id: "lens-53", name: "Signature 16-32mm FF Zoom", brand: "ARRI", category: "lenses" },
+  { id: "lens-53", name: "Signature 16-32mm FF Zoom", brand: "ARRI", category: "lenses", imageUrl: "src/assets/product/Lenses/ARRI Ultra Wide Zoom.jpeg" },
   { id: "lens-54", name: "Signature 24-75mm FF Zoom", brand: "ARRI", category: "lenses" },
   { id: "lens-55", name: "Signature 45-135mm FF Zoom", brand: "ARRI", category: "lenses" },
   { id: "lens-56", name: "Signature 65-300mm FF Zoom", brand: "ARRI", category: "lenses" },
@@ -326,13 +326,13 @@ export const lenses: Product[] = [
   { id: "lens-59", name: "Canon TS-E 24mm L", brand: "Canon", category: "lenses" },
   { id: "lens-60", name: "Canon TS-E 45mm", brand: "Canon", category: "lenses" },
   { id: "lens-61", name: "Canon TS-E 90mm", brand: "Canon", category: "lenses" },
-  { id: "lens-62", name: "Canon CN 4K 20mm", brand: "Canon", category: "lenses" },
+  { id: "lens-62", name: "Canon CN 4K 20mm", brand: "Canon", category: "lenses", imageUrl: "src/assets/product/Lenses/Canon CN-E20mm T1_5 L F Lens EF Mount.jpeg" },
   { id: "lens-63", name: "Canon RF 14-35mm", brand: "Canon", category: "lenses" },
   { id: "lens-64", name: "Canon EF-S 10-22mm", brand: "Canon", category: "lenses" },
   { id: "lens-65", name: "Canon EF-S 15-85mm", brand: "Canon", category: "lenses" },
   { id: "lens-66", name: "Canon EF-S 17-55mm", brand: "Canon", category: "lenses" },
   { id: "lens-67", name: "Canon L Prime 14mm", brand: "Canon", category: "lenses" },
-  { id: "lens-68", name: "Canon L Prime 24mm", brand: "Canon", category: "lenses" },
+  { id: "lens-68", name: "Canon L Prime 24mm", brand: "Canon", category: "lenses", imageUrl: "src/assets/product/Lenses/Canon CN-E 24mm T1_5 L F Lens with EF Mount.jpeg" },
   { id: "lens-69", name: "Canon L Prime 35mm", brand: "Canon", category: "lenses" },
   { id: "lens-70", name: "Canon L Prime 50mm", brand: "Canon", category: "lenses" },
   { id: "lens-71", name: "Canon L Prime 85mm", brand: "Canon", category: "lenses" },
@@ -375,7 +375,7 @@ export const lenses: Product[] = [
   { id: "lens-108", name: "Canon HJ22ex7.6 ENG Zoom B4 Mount", brand: "Canon", category: "lenses" },
   { id: "lens-109", name: "45-135mm 8K Full Frame Cinema Zoom", brand: "Canon", category: "lenses" },
   { id: "lens-110", name: "20-50mm & 45-135mm Canon Cinema Zoom", brand: "Canon", category: "lenses" },
-  { id: "lens-111", name: "Canon CN 4K Set (14,24,35,50,85,135)", brand: "Canon", category: "lenses" },
+  { id: "lens-111", name: "Canon CN 4K Set (14,24,35,50,85,135)", brand: "Canon", category: "lenses", imageUrl: "src/assets/product/Lenses/Canon CN-E Primes.jpeg" },
   { id: "lens-112", name: "Canon 25mm Rangfider Vintage FF Prime", brand: "Canon", category: "lenses" },
   { id: "lens-113", name: "Canon RangeFinder FF Vintage Prime Set", brand: "Canon", category: "lenses" },
   { id: "lens-114", name: "Canon 35mm RangeFinder Vintage FF Prime", brand: "Canon", category: "lenses" },
@@ -415,7 +415,7 @@ export const lenses: Product[] = [
   { id: "lens-146", name: "Cooke Vintage Zoom T4 25-250mm", brand: "Cooke", category: "lenses" },
   
   // Zeiss
-  { id: "lens-147", name: "Zeiss CP.2 21mm", brand: "Zeiss", category: "lenses" },
+  { id: "lens-147", name: "Zeiss CP.2 21mm", brand: "Zeiss", category: "lenses", imageUrl: "src/assets/product/Lenses/Zeiss 21mm 2_8.jpeg" },
   { id: "lens-148", name: "Zeiss CP.2 28mm", brand: "Zeiss", category: "lenses" },
   { id: "lens-149", name: "Zeiss CP.2 135mm", brand: "Zeiss", category: "lenses" },
   { id: "lens-150", name: "Zeiss LWZ.2 15.5-45mm", brand: "Zeiss", category: "lenses" },
@@ -429,7 +429,7 @@ export const lenses: Product[] = [
   { id: "lens-158", name: "Zeiss ZF Prime 100mm Macro EOS", brand: "Zeiss", category: "lenses" },
   { id: "lens-159", name: "Zeiss Supreme Prime Radiance 21mm", brand: "Zeiss", category: "lenses" },
   { id: "lens-160", name: "Zeiss Supreme Prime Radiance 100mm", brand: "Zeiss", category: "lenses" },
-  { id: "lens-161", name: "Zeiss CP.2 PL Mount Set A (18,25,35,50,85)", brand: "Zeiss", category: "lenses" },
+  { id: "lens-161", name: "Zeiss CP.2 PL Mount Set A (18,25,35,50,85)", brand: "Zeiss", category: "lenses", imageUrl: "src/assets/product/Lenses/Zeiss CP_2 Primes.jpeg" },
   { id: "lens-162", name: "Zeiss CP2 85mm PL Mount", brand: "Zeiss", category: "lenses" },
   { id: "lens-163", name: "Zeiss CP2 18mm PL Mount", brand: "Zeiss", category: "lenses" },
   { id: "lens-164", name: "Zeiss CP2 21mm PL Mount", brand: "Zeiss", category: "lenses" },
@@ -446,7 +446,7 @@ export const lenses: Product[] = [
   { id: "lens-175", name: "Zeiss CP2 35mm EOS Mount", brand: "Zeiss", category: "lenses" },
   { id: "lens-176", name: "Zeiss CP2 85mm EOS Mount", brand: "Zeiss", category: "lenses" },
   { id: "lens-177", name: "Zeiss CP2 135mm EOS Mount", brand: "Zeiss", category: "lenses" },
-  { id: "lens-178", name: "Zeiss CP2 PL Set of 6pcs 18, 21, 25, 35, 50, 85mm", brand: "Zeiss", category: "lenses" },
+  { id: "lens-178", name: "Zeiss CP2 PL Set of 6pcs 18, 21, 25, 35, 50, 85mm", brand: "Zeiss", category: "lenses", imageUrl: "src/assets/product/Lenses/Zeiss Compact Prime CP_3 Lens Set - PL Mount.jpeg" },
   { id: "lens-179", name: "Zeiss CP2 EOS Prime Set of 6pcs 18, 21, 25, 35, 50, 85mm", brand: "Zeiss", category: "lenses" },
   { id: "lens-180", name: "Zeiss CP2 PL Mount Set B 21,28,35,50,85mm", brand: "Zeiss", category: "lenses" },
   { id: "lens-181", name: "Zeiss CP2 EOS Mount Set A 18,25,35,50,85mm", brand: "Zeiss", category: "lenses" },
@@ -500,7 +500,7 @@ export const lenses: Product[] = [
   // Fujinon
   { id: "lens-226", name: "Fujinon MK18-55mm T2.9", brand: "Fujinon", category: "lenses" },
   { id: "lens-227", name: "Fujinon MK 50-135mm T2.9", brand: "Fujinon", category: "lenses" },
-  { id: "lens-228", name: "Fujinon XK20-120mm Cabrio", brand: "Fujinon", category: "lenses" },
+  { id: "lens-228", name: "Fujinon XK20-120mm Cabrio", brand: "Fujinon", category: "lenses", imageUrl: "src/assets/product/Lenses/FUJINON XK6 x 20.jpeg" },
   { id: "lens-229", name: "Fujinon AT A10x4.8BEVM 28 ENG B4 Mount", brand: "Fujinon", category: "lenses" },
   { id: "lens-230", name: "Fujinon Cine Zoom Set 18-55mm / 50-135mm", brand: "Fujinon", category: "lenses" },
   
@@ -513,12 +513,12 @@ export const lenses: Product[] = [
   { id: "lens-236", name: "Hawk V-Lite 2x Anamorphic Set of 3 (35,55,80)", brand: "Hawk", category: "lenses" },
   { id: "lens-237", name: "Hawk V-Lite 2x Anamorphic Set of 5 (28,35,55,80,110)", brand: "Hawk", category: "lenses" },
   { id: "lens-238", name: "Hawk 2x Anamorphic Prime (35mm)", brand: "Hawk", category: "lenses" },
-  { id: "lens-239", name: "Vintage Hawk V-Lite Anamorphic Set of 3", brand: "Hawk", category: "lenses" },
-  { id: "lens-240", name: "Vintage Hawk V-Lite Anamorphic Set of 5", brand: "Hawk", category: "lenses" },
+  { id: "lens-239", name: "Vintage Hawk V-Lite Anamorphic Set of 3", brand: "Hawk", category: "lenses", imageUrl: "src/assets/product/Lenses/Hawk V-Plus Zooms.jpeg" },
+  { id: "lens-240", name: "Vintage Hawk V-Lite Anamorphic Set of 5", brand: "Hawk", category: "lenses", imageUrl: "src/assets/product/Lenses/Hawk V-Plus Zooms.jpeg" },
   
   // Laowa / Loawa
   { id: "lens-241", name: "Laowa 28mm f1.2 FE Mount", brand: "Laowa", category: "lenses" },
-  { id: "lens-242", name: "Loawa 1.5x Nanomorph Lens", brand: "Laowa", category: "lenses" },
+  { id: "lens-242", name: "Loawa 1.5x Nanomorph Lens", brand: "Laowa", category: "lenses", imageUrl: "src/assets/product/Lenses/Laowa Nanomorph S35 Prime 3 Lens Bundle - 27mm, 35mm, 50mm.jpeg" },
   { id: "lens-243", name: "Laowa 100mm Macro PL Mount", brand: "Laowa", category: "lenses" },
   { id: "lens-244", name: "Peleng Fish Eye (EOS Mount)", brand: "Laowa", category: "lenses" },
   { id: "lens-245", name: "Laowa 15mm Macro Sony E Mount", brand: "Laowa", category: "lenses" },
@@ -528,9 +528,6 @@ export const lenses: Product[] = [
   { id: "lens-249", name: "Laowa Ranger 28-75mm Full Frame Zoom", brand: "Laowa", category: "lenses" },
   { id: "lens-250", name: "Laowa Ranger 75-180mm Full Frame Zoom", brand: "Laowa", category: "lenses" },
   { id: "lens-251", name: "Laowa FF Ranger Zoom 28-75mm / 75-180mm", brand: "Laowa", category: "lenses" },
-  { id: "lens-252", name: "Loawa 27mm 1.5x Anamorphic Nonamorph", brand: "Laowa", category: "lenses" },
-  { id: "lens-253", name: "Loawa 35mm 1.5x Anamorphic Nonamorph", brand: "Laowa", category: "lenses" },
-  { id: "lens-254", name: "Loawa 50mm 1.5x Anamorphic Nonamorph", brand: "Laowa", category: "lenses" },
   { id: "lens-255", name: "24mm T14 2x Periprobe Prode with a Twist", brand: "Laowa", category: "lenses" },
   
   // Night Walker
@@ -559,7 +556,7 @@ export const lenses: Product[] = [
   { id: "lens-276", name: "Leitz APO- Summicron M0.8 75mm f2", brand: "Leica", category: "lenses" },
   { id: "lens-277", name: "Leitz APO- Summicron M0.8 90mm f2", brand: "Leica", category: "lenses" },
   { id: "lens-278", name: "Leica -R 100mm Macro Duclos Cine-Mod", brand: "Leica", category: "lenses" },
-  { id: "lens-279", name: "Leica Summicron-C Set (18,25,35,50,75)", brand: "Leica", category: "lenses" },
+  { id: "lens-279", name: "Leica Summicron-C Set (18,25,35,50,75)", brand: "Leica", category: "lenses", imageUrl: "src/assets/product/Lenses/Leica Summicron-C Series of Lenses.jpeg" },
   { id: "lens-280", name: "Leica R 19,24,35,50,80,90,135mm PL Set", brand: "Leica", category: "lenses" },
   { id: "lens-281", name: "Leica Thambar-M 90mm f2.2 Duclos Cine-Mod", brand: "Leica", category: "lenses" },
   { id: "lens-282", name: "Leitz Summilux M0.8 6pcs Set (21,28,35,50,75,90mm)", brand: "Leica", category: "lenses" },
@@ -575,10 +572,10 @@ export const lenses: Product[] = [
   { id: "lens-290", name: "Sigma Art 50-100mm", brand: "Sigma", category: "lenses" },
   { id: "lens-291", name: "Sigma High Speed Zoom 18-35mm", brand: "Sigma", category: "lenses" },
   { id: "lens-292", name: "Sigma High Speed Zoom 50-100mm", brand: "Sigma", category: "lenses" },
-  { id: "lens-293", name: "Sigma FF High Speed Prime 14mm", brand: "Sigma", category: "lenses" },
+  { id: "lens-293", name: "Sigma FF High Speed Prime 14mm", brand: "Sigma", category: "lenses", imageUrl: "src/assets/product/Lenses/Sigma's 14mm T2 FF and 135mm T2 FF Lenses.jpeg" },
   { id: "lens-294", name: "Sigma FF High Speed Prime 105mm", brand: "Sigma", category: "lenses" },
-  { id: "lens-295", name: "Sigma FF High Speed Prime 135mm", brand: "Sigma", category: "lenses" },
-  { id: "lens-296", name: "Sigma FF High Speed Prime Set (20,24,35,50,85)", brand: "Sigma", category: "lenses" },
+  { id: "lens-295", name: "Sigma FF High Speed Prime 135mm", brand: "Sigma", category: "lenses", imageUrl: "src/assets/product/Lenses/Sigma's 14mm T2 FF and 135mm T2 FF Lenses.jpeg" },
+  { id: "lens-296", name: "Sigma FF High Speed Prime Set (20,24,35,50,85)", brand: "Sigma", category: "lenses", imageUrl: "src/assets/product/Lenses/Sigma prime cinema lenses.jpeg" },
   
   // Nikon
   { id: "lens-297", name: "Nikon AI-s 20mm F2.8", brand: "Nikon", category: "lenses" },
@@ -741,12 +738,12 @@ export const lighting: Product[] = [
 ];
 
 export const drones: Product[] = [
-  { id: "drone-1", name: "DJI Agras T40", brand: "DJI", category: "drone", inStock: true },
-  { id: "drone-2", name: "DJI Matrice 30T", brand: "DJI", category: "drone", inStock: true },
-  { id: "drone-3", name: "DJI M400", brand: "DJI", category: "drone", inStock: true },
-  { id: "drone-4", name: "DJI Matrice 400 Drone", brand: "DJI", category: "drone", inStock: true },
-  { id: "drone-5", name: "DJI Agras T100", brand: "DJI", category: "drone", inStock: true },
-  { id: "drone-6", name: "Freefly Alta X", brand: "Freefly", category: "drone", inStock: true },
+  { id: "drone-1", name: "DJI Agras T40", brand: "DJI", category: "drone", inStock: true, imageUrl: "src/assets/product/DJI Agras T40.jpeg" },
+  { id: "drone-2", name: "DJI Matrice 30T", brand: "DJI", category: "drone", inStock: true, imageUrl: "src/assets/product/DJI Matrice 30T.jpeg" },
+  { id: "drone-3", name: "DJI M400", brand: "DJI", category: "drone", inStock: true, imageUrl: "src/assets/product/DJI M400.jpeg" },
+  { id: "drone-4", name: "DJI Matrice 400 Drone", brand: "DJI", category: "drone", inStock: true, imageUrl: "src/assets/product/DJI Matrice 400 Drone.jpeg" },
+  { id: "drone-5", name: "DJI Agras T100", brand: "DJI", category: "drone", inStock: true, imageUrl: "src/assets/product/DJI AGRAS T100.jpeg" },
+  { id: "drone-6", name: "Freefly Alta X", brand: "Freefly", category: "drone", inStock: true, imageUrl: "src/assets/product/Freefly Alta X.jpeg" },
 ];
 
 export const postProductionServices: Product[] = [
