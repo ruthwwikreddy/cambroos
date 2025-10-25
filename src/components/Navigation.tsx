@@ -142,7 +142,7 @@ const Navigation = () => {
               <img 
                 src={logo} 
                 alt="Cambroos Logo" 
-                className="h-20 w-auto -mt-2 invert brightness-0 dark:brightness-100" 
+                className="h-20 w-auto -mt-2" 
               />
             </Link>
             
