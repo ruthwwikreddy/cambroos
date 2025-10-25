@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import { useDebounce } from 'use-debounce';
 import { Menu, X, ShoppingCart, Search, Loader2, ChevronDown } from "lucide-react";
+import logo from "@/assets/logo.png";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/contexts/CartContext";
 import { ThemeToggle } from "@/components/theme/ThemeToggle";
@@ -138,7 +139,11 @@ const Navigation = () => {
         <div className="relative z-10">
           <div className="flex items-center justify-between h-14 px-3">
             <Link to="/" className="flex-shrink-0">
-              <span className="text-xl font-bold bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">Cambroos</span>
+              <img 
+                src={logo} 
+                alt="Cambroos Logo" 
+                className="h-20 w-auto -mt-2 invert brightness-0 dark:brightness-100" 
+              />
             </Link>
             
             <div className="hidden md:flex items-center space-x-1">
