@@ -1,6 +1,29 @@
 import { Mail, Phone, MapPin, Facebook, Instagram, Linkedin } from "lucide-react";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const Footer = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleHashLink = (hash: string, e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    if (location.pathname !== '/') {
+      navigate(`/${hash}`);
+      setTimeout(() => {
+        const element = document.getElementById(hash.replace('#', ''));
+        element?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 300);
+    } else {
+      const element = document.getElementById(hash.replace('#', ''));
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else {
+        // For missing sections, scroll to top
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+  };
+
   return (
     <footer id="contact" className="bg-charcoal text-white pt-16 pb-8">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -16,22 +39,54 @@ const Footer = () => {
             <h4 className="font-bold text-lg mb-4">Quick Links</h4>
             <ul className="space-y-2">
               <li>
-                <a href="#equipment" className="text-white/70 hover:text-teal transition-colors">
+                <a 
+                  href="#equipment" 
+                  onClick={(e) => handleHashLink('#equipment', e)}
+                  className="text-white/70 hover:text-teal transition-colors cursor-pointer"
+                >
                   Equipment
                 </a>
               </li>
               <li>
-                <a href="#studio" className="text-white/70 hover:text-teal transition-colors">
+                <a 
+                  href="#studio" 
+                  onClick={(e) => {
+                    e.preventDefault();
+                    if (location.pathname !== '/') {
+                      navigate('/');
+                      setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 100);
+                    } else {
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }
+                  }}
+                  className="text-white/70 hover:text-teal transition-colors cursor-pointer"
+                >
                   Studio Rentals
                 </a>
               </li>
               <li>
-                <a href="#about" className="text-white/70 hover:text-teal transition-colors">
+                <a 
+                  href="#about" 
+                  onClick={(e) => handleHashLink('#about', e)}
+                  className="text-white/70 hover:text-teal transition-colors cursor-pointer"
+                >
                   About Us
                 </a>
               </li>
               <li>
-                <a href="#portfolio" className="text-white/70 hover:text-teal transition-colors">
+                <a 
+                  href="#portfolio" 
+                  onClick={(e) => {
+                    e.preventDefault();
+                    if (location.pathname !== '/') {
+                      navigate('/');
+                      setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 100);
+                    } else {
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }
+                  }}
+                  className="text-white/70 hover:text-teal transition-colors cursor-pointer"
+                >
                   Portfolio
                 </a>
               </li>
@@ -57,7 +112,11 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="#contact" className="text-white/70 hover:text-teal transition-colors">
+                <a 
+                  href="#contact" 
+                  onClick={(e) => handleHashLink('#contact', e)}
+                  className="text-white/70 hover:text-teal transition-colors cursor-pointer"
+                >
                   Contact Us
                 </a>
               </li>

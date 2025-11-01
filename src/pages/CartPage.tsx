@@ -199,6 +199,7 @@ const CartPage = () => {
             <p className="text-muted-foreground mb-6">{submitError}</p>
             <div className="space-y-2">
               <Button 
+                type="button"
                 onClick={() => {
                   setSubmitError(null);
                   setRetryCount(retryCount + 1);
@@ -265,7 +266,7 @@ const CartPage = () => {
                   <ShoppingCart className="w-8 h-8 text-primary" />
                   <h1 className="text-3xl font-bold">Your Quote Request</h1>
                 </div>
-                <Button variant="outline" onClick={clearCart}>
+                <Button type="button" variant="outline" onClick={clearCart}>
                   Clear All
                 </Button>
               </div>
@@ -284,6 +285,7 @@ const CartPage = () => {
                       <div className="flex items-center gap-4">
                         <div className="flex items-center gap-2">
                           <Button
+                            type="button"
                             variant="outline"
                             size="icon"
                             className="h-8 w-8"
@@ -293,6 +295,7 @@ const CartPage = () => {
                           </Button>
                           <span className="w-8 text-center">{item.quantity}</span>
                           <Button
+                            type="button"
                             variant="outline"
                             size="icon"
                             className="h-8 w-8"
@@ -302,6 +305,7 @@ const CartPage = () => {
                           </Button>
                         </div>
                         <Button
+                          type="button"
                           variant="ghost"
                           size="icon"
                           onClick={() => removeFromCart(item.id)}

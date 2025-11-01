@@ -5,7 +5,7 @@ import logo from "@/assets/logo.png";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/contexts/CartContext";
 import { ThemeToggle } from "@/components/theme/ThemeToggle";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Input } from "@/components/ui/input";
 import { Drawer } from "vaul";
 import { gear, cameras, lenses, lighting, drones } from "@/data/products";
@@ -27,6 +27,7 @@ const Navigation = () => {
   const searchRef = useRef<HTMLDivElement>(null);
   const productsMenuRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
+  const location = useLocation();
   const { totalItems } = useCart();
 
   // Close products dropdown when clicking outside
@@ -124,6 +125,15 @@ const Navigation = () => {
     setIsSearchFocused(false);
   };
 
+  // Handle logo click - navigate to home and scroll to top
+  const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (location.pathname === '/') {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    // If not on home page, Link will handle navigation naturally
+  };
+
   return (
     <div className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-full max-w-6xl px-4">
       <nav 
@@ -138,11 +148,11 @@ const Navigation = () => {
         
         <div className="relative z-10">
           <div className="flex items-center justify-between h-14 px-3">
-            <Link to="/" className="flex-shrink-0">
+            <Link to="/" className="flex-shrink-0" onClick={handleLogoClick}>
               <img 
                 src={logo} 
                 alt="Cambroos Logo" 
-                className="h-20 w-auto -mt-2" 
+                className="h-20 w-auto -mt-2 cursor-pointer" 
               />
             </Link>
             
@@ -206,17 +216,45 @@ const Navigation = () => {
               </div>
 
               {[
-                { href: "#studio", label: "Studio" },
-                { href: "#about", label: "About" },
-                { href: "#portfolio", label: "Portfolio" },
+                { href: "#studio", label: "Studio", action: () => {
+                    if (location.pathname !== '/') {
+                      navigate('/');
+                      setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 100);
+                    } else {
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }
+                  }
+                },
+                { href: "#about", label: "About", action: () => {
+                    if (location.pathname !== '/') {
+                      navigate('/#about');
+                    } else {
+                      const aboutSection = document.getElementById('about');
+                      aboutSection?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                  }
+                },
+                { href: "#portfolio", label: "Portfolio", action: () => {
+                    if (location.pathname !== '/') {
+                      navigate('/');
+                      setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 100);
+                    } else {
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }
+                  }
+                },
               ].map((item, index) => (
-                <a
+                <button
                   key={index}
-                  href={item.href}
+                  type="button"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    item.action();
+                  }}
                   className="px-4 py-2 text-sm font-medium text-foreground/80 hover:text-primary hover:bg-primary/5 rounded-xl transition-all duration-300 hover:scale-105"
                 >
                   {item.label}
-                </a>
+                </button>
               ))}
             </div>
 
@@ -364,27 +402,51 @@ const Navigation = () => {
                       >
                         Lighting
                       </Link>
-                      <a
-                        href="#studio"
-                        className="block px-3 py-2 rounded-md text-foreground/80 hover:bg-accent/50 hover:text-primary transition-colors text-sm"
-                        onClick={() => setIsOpen(false)}
+                      <button
+                        type="button"
+                        className="block px-3 py-2 rounded-md text-foreground/80 hover:bg-accent/50 hover:text-primary transition-colors text-sm w-full text-left"
+                        onClick={() => {
+                          setIsOpen(false);
+                          if (location.pathname !== '/') {
+                            navigate('/');
+                            setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 100);
+                          } else {
+                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                          }
+                        }}
                       >
                         Studio
-                      </a>
-                      <a
-                        href="#about"
-                        className="block px-3 py-2 rounded-md text-foreground/80 hover:bg-accent/50 hover:text-primary transition-colors text-sm"
-                        onClick={() => setIsOpen(false)}
+                      </button>
+                      <button
+                        type="button"
+                        className="block px-3 py-2 rounded-md text-foreground/80 hover:bg-accent/50 hover:text-primary transition-colors text-sm w-full text-left"
+                        onClick={() => {
+                          setIsOpen(false);
+                          if (location.pathname !== '/') {
+                            navigate('/#about');
+                          } else {
+                            const aboutSection = document.getElementById('about');
+                            aboutSection?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                          }
+                        }}
                       >
                         About
-                      </a>
-                      <a
-                        href="#portfolio"
-                        className="block px-3 py-2 rounded-md text-foreground/80 hover:bg-accent/50 hover:text-primary transition-colors text-sm"
-                        onClick={() => setIsOpen(false)}
+                      </button>
+                      <button
+                        type="button"
+                        className="block px-3 py-2 rounded-md text-foreground/80 hover:bg-accent/50 hover:text-primary transition-colors text-sm w-full text-left"
+                        onClick={() => {
+                          setIsOpen(false);
+                          if (location.pathname !== '/') {
+                            navigate('/');
+                            setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 100);
+                          } else {
+                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                          }
+                        }}
                       >
                         Portfolio
-                      </a>
+                      </button>
                     </div>
                   </div>
                 </div>

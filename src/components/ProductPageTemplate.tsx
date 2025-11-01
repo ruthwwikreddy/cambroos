@@ -284,6 +284,7 @@ export const ProductPageTemplate = ({
                             <span className="text-sm text-muted-foreground">Quantity</span>
                             <div className="flex items-center gap-2">
                               <Button
+                                type="button"
                                 variant="outline"
                                 size="sm"
                                 className="h-8 w-8 p-0"
@@ -310,6 +311,7 @@ export const ProductPageTemplate = ({
                                 onClick={(e) => e.stopPropagation()}
                               />
                               <Button
+                                type="button"
                                 variant="outline"
                                 size="sm"
                                 className="h-8 w-8 p-0"
@@ -327,6 +329,7 @@ export const ProductPageTemplate = ({
 
                       <CardFooter className="p-6 pt-0">
                         <Button 
+                          type="button"
                           className="w-full"
                           onClick={(e) => {
                             e.stopPropagation();
@@ -346,6 +349,7 @@ export const ProductPageTemplate = ({
               <div className="text-center py-12">
                 <p className="text-muted-foreground">No {title.toLowerCase()} found matching your criteria.</p>
                 <Button 
+                  type="button"
                   variant="outline" 
                   className="mt-4"
                   onClick={clearFilters}

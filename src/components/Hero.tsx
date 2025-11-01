@@ -1,8 +1,38 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { useNavigate, useLocation } from "react-router-dom";
 import heroImage from "@/assets/hero-camera.jpg";
 
 const Hero = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleEquipmentClick = () => {
+    if (location.pathname !== '/') {
+      navigate('/#equipment');
+      setTimeout(() => {
+        const equipmentSection = document.getElementById('equipment');
+        equipmentSection?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 300);
+    } else {
+      const equipmentSection = document.getElementById('equipment');
+      equipmentSection?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
+  const handleContactClick = () => {
+    if (location.pathname !== '/') {
+      navigate('/#contact');
+      setTimeout(() => {
+        const contactSection = document.getElementById('contact');
+        contactSection?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 300);
+    } else {
+      const contactSection = document.getElementById('contact');
+      contactSection?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Blurred Background Image */}
@@ -31,10 +61,8 @@ const Hero = () => {
             <Button 
               size="lg" 
               className="text-lg"
-              onClick={() => {
-                const equipmentSection = document.getElementById('equipment');
-                equipmentSection?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-              }}
+              type="button"
+              onClick={handleEquipmentClick}
             >
               Browse Equipment
               <ArrowRight className="ml-2 h-5 w-5" />
@@ -43,10 +71,8 @@ const Hero = () => {
               size="lg" 
               variant="outline"
               className="text-lg bg-white/10 hover:bg-white/20 border-white/30 text-white"
-              onClick={() => {
-                const contactSection = document.getElementById('contact');
-                contactSection?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-              }}
+              type="button"
+              onClick={handleContactClick}
             >
               Contact Us
             </Button>

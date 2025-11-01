@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -21,17 +21,7 @@ const SearchResults = () => {
     link: string;
   }>>([]);
 
-  // Get search query from URL
-  useEffect(() => {
-    const params = new URLSearchParams(location.search);
-    const query = params.get('q') || '';
-    setSearchQuery(query);
-    if (query) {
-      performSearch(query);
-    }
-  }, [location.search]);
-
-  const performSearch = (query: string) => {
+  const performSearch = useCallback((query: string) => {
     if (!query.trim()) {
       setResults([]);
       return;
@@ -85,7 +75,17 @@ const SearchResults = () => {
       setResults(matchedProducts);
       setIsSearching(false);
     }, 200);
-  };
+  }, []);
+
+  // Get search query from URL
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const query = params.get('q') || '';
+    setSearchQuery(query);
+    if (query) {
+      performSearch(query);
+    }
+  }, [location.search, performSearch]);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -94,9 +94,15 @@ const SearchResults = () => {
     }
   };
 
-  const handleResultClick = (item: any) => {
+  const handleResultClick = (item: {
+    id: string;
+    route?: string;
+    category?: string;
+    name?: string;
+  }) => {
     // Navigate to the category page with the product ID as a hash
-    navigate(`/${item.route}#${item.id}`, { state: { search: searchQuery } });
+    const route = item.route || item.category?.toLowerCase() || 'cameras';
+    navigate(`/${route}#${item.id}`, { state: { search: searchQuery } });
     setSearchQuery("");
     setResults([]);
   };
@@ -152,6 +158,7 @@ const SearchResults = () => {
                 </CardHeader>
                 <CardContent>
                   <Button 
+                    type="button"
                     className="w-full"
                     onClick={(e) => {
                       e.preventDefault();
